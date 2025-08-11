@@ -25,5 +25,5 @@ No frameworks, no libraries, no boilerplate — just pure JS, HTML, and CSS.
 ## ⚙️ How to Run
 Clone the repo:
 ```bash
-git clone https://github.com/YOUR-USERNAME/js30.git
+git clone https://github.com/ThyuHtooAungOwO/js30.git
 cd js30
