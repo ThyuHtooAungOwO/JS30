@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blur Image</title>
+    <link rel="stylesheet" href="index.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <h1>Update CSS Variables With <span class="h1">JS</span></h1>
+    <main>
+      <label for="spacing">Spacing: </label>
+      <input
+        type="range"
+        id="spacing"
+        name="spacing"
+        min="10"
+        max="100"
+        value="10"
+        data-variable="--spacing"
+      />
+
+      <label for="blur">Blur: </label>
+      <input
+        type="range"
+        id="blur"
+        name="blur"
+        min="0"
+        max="25"
+        value="3"
+        data-variable="--blur"
+      />
+
+      <label for="base_color">Base Color: </label>
+      <input
+        type="color"
+        id="base-color"
+        value="#ffc600"
+        data-variable="--base"
+      />
+    </main>
+    <img src="./assets/jinx.png" alt="arcane jinx in water" class="image" />
+  </body>
+</html>
