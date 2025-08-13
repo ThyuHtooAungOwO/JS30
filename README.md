@@ -7,11 +7,12 @@ No frameworks, no libraries, no boilerplate — just pure JS, HTML, and CSS.
 
 ## 📌 Completed Projects
 
-| Day | Project            | Description                                                                                                                                                                                           |
-| --- | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 01  | **Drum Kit**       | Built a drum kit that plays sounds when keys are pressed. Learned about `keydown` events and working with audio elements in JS.                                                                       |
-| 02  | **CSS + JS Clock** | Made an analog clock with real-time updates using CSS transforms and JS date methods.                                                                                                                 |
-| 03  | **Blur Image**     | Learned how to use `<input type="range">` sliders to update CSS variables dynamically with JavaScript. Practiced DOM manipulation using `dataset` and `document.documentElement.style.setProperty()`. |
+| Day | Project                | Description                                                                                                                                                                                                  |
+| --- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 01  | **Drum Kit**           | Built a drum kit that plays sounds when keys are pressed. Learned about `keydown` events and working with audio elements in JS.                                                                              |
+| 02  | **CSS + JS Clock**     | Made an analog clock with real-time updates using CSS transforms and JS date methods.                                                                                                                        |
+| 03  | **Blur Image**         | Learned how to use `<input type="range">` sliders to update CSS variables dynamically with JavaScript. Practiced DOM manipulation using `dataset` and `document.documentElement.style.setProperty()`.        |
+| 04  | **Array Cardio Day 1** | Got swole with arrays using `.filter()`, `.map()`, `.sort()`, and `.reduce()`. Learned how to manipulate object arrays and string arrays. Also got comfy with `console.table()` for that clean debug output. |
 
 ---
 
