@@ -5,7 +5,7 @@ No frameworks, no libraries, no boilerplate — just pure JS, HTML, and CSS.
 
 ---
 
-> **Note:** All JS30 projects are also available to view live on [GitHub Pages](https://thyuhtooaungowo.github.io/JS30/).
+> **Note:** All JS30 projects are also available to view live on [Vercel](https://js-30-two.vercel.app/).
 
 ## 📌 Completed Projects
 
@@ -32,6 +32,6 @@ No frameworks, no libraries, no boilerplate — just pure JS, HTML, and CSS.
 Clone the repo:
 
 ```bash
-git clone https://github.com/ThyuHtooAungOwO/js30.git
-cd js30
+git clone https://github.com/ThyuHtooAungOwO/JS30.git
+cd JS30
 ```
