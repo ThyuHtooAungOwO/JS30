@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My JS30 Projects</title>
+    <link
+      rel="shortcut icon"
+      href="./array_cardio/assets/logo.svg"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* General Styles */
+      :root {
+        --primary-color: #4a90e2;
+        --secondary-color: #3f51b5;
+        --background-color: #f4f7f9;
+        --text-color: #333;
+        --card-background: #ffffff;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      body {
+        font-family: "Fira Code", monospace;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      /* Header and Title */
+      .main-title {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        color: var(--secondary-color);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      /* Project List Layout */
+      .project-list {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        padding: 0;
+        justify-content: center;
+      }
+
+      /* Project Card Styling */
+      .project-item {
+        list-style: none;
+        background-color: var(--card-background);
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        width: 250px;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .project-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .project-link {
+        display: block;
+        text-decoration: none;
+        color: var(--primary-color);
+        font-weight: 600;
+        padding: 1.5rem;
+        transition: background-color 0.3s ease;
+      }
+
+      .project-item:hover .project-link {
+        background-color: var(--primary-color);
+        color: white;
+      }
+    </style>
+  </head>
+  <body class="page-body">
+    <header class="page-header">
+      <h1 class="main-title">My JS30 Projects</h1>
+    </header>
+    <main class="project-container">
+      <ul class="project-list">
+        <li class="project-item">
+          <a href="./drum_kit/" class="project-link">Day 1 - Drum Kit</a>
+        </li>
+        <li class="project-item">
+          <a href="./css_clock/" class="project-link">Day 2 - CSS Clock</a>
+        </li>
+        <li class="project-item">
+          <a href="./blur_image/" class="project-link">Day 3 - Blur Image</a>
+        </li>
+        <li class="project-item">
+          <a href="./array_cardio/" class="project-link"
+            >Day 4 - Array Cardio</a
+          >
+        </li>
+        <li class="project-item">
+          <a href="./flex_panels/" class="project-link">Day 5 - Flex Panels</a>
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>
