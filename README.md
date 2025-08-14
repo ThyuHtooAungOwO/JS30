@@ -5,7 +5,7 @@ No frameworks, no libraries, no boilerplate — just pure JS, HTML, and CSS.
 
 ---
 
-> **Note:** All JS30 projects are also available to view live on [GitHub Pages](https://thyuhtooaungowo.github.io/js30/).
+> **Note:** All JS30 projects are also available to view live on [GitHub Pages](https://thyuhtooaungowo.github.io/JS30/).
 
 ## 📌 Completed Projects
 
