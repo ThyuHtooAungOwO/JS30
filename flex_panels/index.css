@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+    margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        interpolate-size: allow-keywords;
+    }
+}
+
+body {
+    /* 4. Add accessible line-height */
+    line-height: 1.5;
+    /* 5. Improve text rendering */
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Shadows Into Light', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+    text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root,
+#__next {
+    isolation: isolate;
+}
+
+/* Flex panels */
+:root {
+    --transition-duration: 0.5s;
+    --panel-flex-grow: 4;
+}
+
+.panels {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.panel {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    transition: flex var(--transition-duration) ease-in-out;
+}
+
+.panel>p {
+    font-size: 60px;
+    flex: 1;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform var(--transition-duration) ease-in-out, font-size var(--transition-duration) ease-in-out;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.panel>p:first-child {
+    transform: translateY(-100%);
+}
+
+.panel>p:last-child {
+    transform: translateY(100%);
+}
+
+.panel.open-active>p:first-child,
+.panel.open-active>p:last-child {
+    transform: translateY(0);
+}
+
+.panel.open {
+    flex: var(--panel-flex-grow);
+}
+
+.panel.open>p {
+    font-size: 80px;
+}
+
+.panel1 {
+    background: url("./assets/ari-kurniawan-wAg0NlNOd4M-unsplash.jpg") no-repeat center/cover;
+}
+
+.panel2 {
+    background: url("./assets/bruno-van-der-kraan-G1QoWFJk2Fs-unsplash.jpg") no-repeat center/cover;
+}
+
+.panel3 {
+    background: url("./assets/chris-weiher-MrF48GjKUmA-unsplash.jpg") no-repeat center/cover;
+}
+
+.panel4 {
+    background: url("./assets/kimber-MUsw_WEPgho-unsplash.jpg") no-repeat center/cover;
+}
+
+.panel5 {
+    background: url("./assets/michiel-annaert-1jKgrGsQYdA-unsplash.jpg") no-repeat center/cover;
+}
