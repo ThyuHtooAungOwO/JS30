@@ -17,6 +17,7 @@ No frameworks, no libraries, no boilerplate — just pure JS, HTML, and CSS.
 | 04  | **Array Cardio Day 1** | Got swole with arrays using `.filter()`, `.map()`, `.sort()`, and `.reduce()`. Learned how to manipulate object arrays and string arrays. Also got comfy with `console.table()` for that clean debug output.               |
 | 05  | **Flex Panels**        | Played with flexbox panels that expand and contract on click. Learned how to combine `flex`, `transition`, and `transform` for smooth animations. Got comfortable with `transitionend` events to trigger animations in JS. |
 | 06  | **Ajax Type Ahead**    | Made a live search for cities/states using `fetch` + `RegExp`. Highlighted matches, formatted numbers, and handled empty input.                                                                                            |
+| 07  | **Array Cardio Day 2** | Practiced advanced array methods like `.some()`, `.every()`, `.find()`, and `.findIndex()`.                                                                                                                                |
 
 ---
 
