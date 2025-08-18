@@ -18,6 +18,7 @@ No frameworks, no libraries, no boilerplate — just pure JS, HTML, and CSS.
 | 05  | **Flex Panels**        | Played with flexbox panels that expand and contract on click. Learned how to combine `flex`, `transition`, and `transform` for smooth animations. Got comfortable with `transitionend` events to trigger animations in JS. |
 | 06  | **Ajax Type Ahead**    | Made a live search for cities/states using `fetch` + `RegExp`. Highlighted matches, formatted numbers, and handled empty input.                                                                                            |
 | 07  | **Array Cardio Day 2** | Practiced advanced array methods like `.some()`, `.every()`, `.find()`, and `.findIndex()`.                                                                                                                                |
+| 08  | **Fun with Canvas**    | Built a rainbow brush paint app using `<canvas>`, practiced `mousemove` events, ctx.`strokeStyle`, `lineJoin`, `lineCap`, and dynamic `lineWidth` with HSL colors.                                                         |
 
 ---
 
