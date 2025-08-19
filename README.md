@@ -19,6 +19,7 @@ No frameworks, no libraries, no boilerplate — just pure JS, HTML, and CSS.
 | 06  | **Ajax Type Ahead**    | Made a live search for cities/states using `fetch` + `RegExp`. Highlighted matches, formatted numbers, and handled empty input.                                                                                            |
 | 07  | **Array Cardio Day 2** | Practiced advanced array methods like `.some()`, `.every()`, `.find()`, and `.findIndex()`.                                                                                                                                |
 | 08  | **Fun with Canvas**    | Built a rainbow brush paint app using `<canvas>`, practiced `mousemove` events, ctx.`strokeStyle`, `lineJoin`, `lineCap`, and dynamic `lineWidth` with HSL colors.                                                         |
+| 09  | **Dev Tools Tricks**   | Learned handy Chrome DevTools shortcuts: live DOM edits, console magic, breakpoints, and network tricks.                                                                                                                   |
 
 ---
 
