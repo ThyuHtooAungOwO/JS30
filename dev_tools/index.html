@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Console Tricks!</title>
+    <link rel="shortcut icon" href="../assets/logo.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        background: #eeaeca;
+        background: linear-gradient(
+          118deg,
+          rgba(238, 174, 202, 1) 0%,
+          rgba(148, 187, 233, 1) 100%
+        );
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      p {
+        font-size: 2rem;
+        text-align: center;
+        color: #fff;
+        cursor: pointer;
+        transition: color 0.3s ease, font-size 0.3s ease;
+        user-select: none;
+      }
+    </style>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <p onclick="makeGreen()" data-on="false">BREAKxDOWN</p>
+  </body>
+</html>
