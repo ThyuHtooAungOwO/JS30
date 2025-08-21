@@ -1,0 +1,149 @@
+/* General styling for a clean, modern look */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Main player container */
+.player {
+  max-width: 850px;
+  width: 100%;
+  background: #1e1e1e;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  position: relative;
+  font-size: 0;
+  transition: all 0.3s ease;
+}
+
+/* Video element */
+.player__video {
+  width: 100%;
+  display: block;
+  background: black;
+}
+
+/* Play/pause overlay button */
+.play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0);
+  transition: background-color 0.3s ease;
+}
+
+.play-overlay:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Controls container */
+.player__controls {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 20px;
+  background: rgba(40, 40, 40, 0.95);
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 10;
+}
+
+.player:hover .player__controls {
+  transform: translateY(0);
+}
+
+/* Progress bar */
+.progress {
+  width: 100%;
+  height: 8px;
+  background: #444;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.progress__filled {
+  height: 100%;
+  background: #007bff;
+  border-radius: 4px;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+/* Lower controls row */
+.player__controls-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* General button styling */
+.player__button {
+  background: none;
+  border: none;
+  color: #e0e0e0;
+  font-size: 1rem;
+  padding: 8px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.player__button:hover {
+  color: #fff;
+}
+
+.player__button.toggle {
+  font-size: 1.5rem;
+}
+
+.player__slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #444;
+  height: 4px;
+  border-radius: 2px;
+  cursor: pointer;
+  flex: 1;
+}
+
+.player__slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: #007bff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Time display */
+.player__time {
+  font-size: 0.9rem;
+  color: #a0a0a0;
+  font-weight: bold;
+}
+
+.player__time-separator {
+  margin: 0 4px;
+}
+
+.fullscreen-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
