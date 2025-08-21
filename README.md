@@ -21,6 +21,7 @@ No frameworks, no libraries, no boilerplate — just pure JS, HTML, and CSS.
 | 08  | **Fun with Canvas**              | Built a rainbow brush paint app using `<canvas>`, practiced `mousemove` events, ctx.`strokeStyle`, `lineJoin`, `lineCap`, and dynamic `lineWidth` with HSL colors.                                                         |
 | 09  | **Dev Tools Tricks**             | Learned handy Chrome DevTools shortcuts: live DOM edits, console magic, breakpoints, and network tricks.                                                                                                                   |
 | 10  | **Hold Shift to Check Multiple** | Made a Gmail-style checklist app using checkboxes + `shiftKey`.                                                                                                                                                            |
+| 11  | **Custom Video Player**          | Made a styled `<video>` player with custom play/pause, skip, volume, and progress bar controls.                                                                                                                            |
 
 ---
 
