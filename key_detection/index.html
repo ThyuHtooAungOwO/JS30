@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Key Detection</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="../assets/logo.svg" type="image/x-icon" />
+    <script src="https://www.cornify.com/js/cornify.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <script>
+      const pressed = [];
+      const screctKey = "unseenbugs";
+
+      window.addEventListener("keyup", (e) => {
+        pressed.push(e.key);
+        pressed.splice(
+          -screctKey.length - 1,
+          pressed.length - screctKey.length
+        );
+        if (pressed.join("").includes(screctKey)) {
+          console.log("DING DING DING");
+          cornify_add();
+        }
+      });
+    </script>
+  </body>
+</html>
