@@ -23,6 +23,7 @@ No frameworks, no libraries, no boilerplate — just pure JS, HTML, and CSS.
 | 10  | **Hold Shift to Check Multiple** | Made a Gmail-style checklist app using checkboxes + `shiftKey`.                                                                                                                                                            |
 | 11  | **Custom Video Player**          | Made a styled `<video>` player with custom play/pause, skip, volume, and progress bar controls.                                                                                                                            |
 | 12  | **Key Sequence Detection**       | Built a mini easter-egg feature that listens for a specific sequence of key presses (like the Konami Code). If the sequence matches, it triggers a fun action.                                                             |
+| 13  | **Slide in on Scroll**           | Implemented scroll-based animations where images slide in smoothly as they enter the viewport. Practiced working with scroll events, window.innerHeight, and `debounce` to optimize performance.                           |
 
 ---
 
