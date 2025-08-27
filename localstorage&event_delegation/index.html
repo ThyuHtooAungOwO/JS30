@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LocalStorage and Event Delegation</title>
+    <link rel="shortcut icon" href="../assets/logo.svg" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+        <g fill="none" fill-rule="evenodd">
+          <circle cx="24" cy="24" r="24" fill="#FFF" />
+          <path
+            fill="#0B0D17"
+            d="M24 0c0 16-8 24-24 24 15.718.114 23.718 8.114 24 24 0-16 8-24 24-24-16 0-24-8-24-24z"
+          />
+        </g>
+      </svg>
+      <h1>Todo List</h1>
+      <button id="clear">Clear</button>
+      <ul id="todo-list">
+        <!-- List items will be added here dynamically -->
+      </ul>
+
+      <form id="todo-form" novalidate>
+        <input
+          type="text"
+          name="item"
+          id="todo-input"
+          placeholder="Enter a new todo"
+          required
+        />
+        <button type="submit">Add Todo</button>
+      </form>
+      <div class="btn-group">
+        <button id="check_all">Check All</button>
+        <button id="uncheck_all">Uncheck All</button>
+      </div>
+    </div>
+  </body>
+</html>
