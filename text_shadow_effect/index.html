@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neon Shadow Effect</title>
+    <link rel="shortcut icon" href="../assets/logo.svg" type="image/x-icon" />
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #0f0f0f, #1a1a2e);
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      .hero {
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100%;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+        background: linear-gradient(
+          118deg,
+          rgba(238, 174, 202, 1) 0%,
+          rgba(148, 187, 233, 1) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: text-shadow 0.1s ease;
+      }
+    </style>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="hero">
+      <h1>Neon Glow ✨</h1>
+    </div>
+  </body>
+</html>

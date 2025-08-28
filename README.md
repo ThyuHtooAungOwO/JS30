@@ -26,6 +26,7 @@ No frameworks, no libraries, no boilerplate — just pure JS, HTML, and CSS.
 | 13  | **Slide in on Scroll**                | Implemented scroll-based animations where images slide in smoothly as they enter the viewport. Practiced working with scroll events, window.innerHeight, and `debounce` to optimize performance.                                           |
 | 14  | **JavaScript Reference vs Copy**      | Learned the difference between copying primitives vs references, and practiced cloning arrays/objects with `slice`, spread, `Array.from`, and `Object.assign`.                                                                             |
 | 15  | **LocalStorage and Event Delegation** | Build a simple todo list application that adds and stores items using JavaScript. This exercise will reinforce array and object manipulation, event listeners, and introduce the browser's `localStorage` API for persistent data storage. |
+| 16  | **CSS Text Shadow Mouse Move Effect** | Created a dynamic `text-shadow` effect that responds to mouse movement. Enhanced styling with multiple shadows and vibrant colors for an interactive neon glow effect.                                                                     |
 
 ---
 
