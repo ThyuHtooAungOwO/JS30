@@ -28,6 +28,7 @@ No frameworks, no libraries, no boilerplate — just pure JS, HTML, and CSS.
 | 15  | **LocalStorage and Event Delegation**   | Build a simple todo list application that adds and stores items using JavaScript. This exercise will reinforce array and object manipulation, event listeners, and introduce the browser's `localStorage` API for persistent data storage. |
 | 16  | **CSS Text Shadow Mouse Move Effect**   | Created a dynamic `text-shadow` effect that responds to mouse movement. Enhanced styling with multiple shadows and vibrant colors for an interactive neon glow effect.                                                                     |
 | 17  | **Sorting Band Names Without Articles** | Practiced array sorting in JavaScript by removing leading articles (`a`, `an`, `the`) from band names before sorting. Reinforced skills with regex, string manipulation, and custom comparator functions in `sort()`.                      |
+| 18  | **Adding Up Times with Reduce**         | Use `reduce()` to calculate the total time and practiced modular arithmetic to convert total seconds back into hours, minutes, and seconds.                                                                                                |
 
 ---
 
