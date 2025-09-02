@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS30 Webcam Fun</title>
+    <link rel="shortcut icon" href="../assets/logo.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="photobooth">
+      <div class="controls">
+        <button onclick="takePhoto()">Take Photo</button>
+        <div class="rgb">
+          <label
+            >Red Min: <input type="range" min="0" max="255" name="rmin"
+          /></label>
+          <label
+            >Red Max: <input type="range" min="0" max="255" name="rmax"
+          /></label>
+          <label
+            >Green Min: <input type="range" min="0" max="255" name="gmin"
+          /></label>
+          <label
+            >Green Max: <input type="range" min="0" max="255" name="gmax"
+          /></label>
+
+          <label
+            >Blue Min: <input type="range" min="0" max="255" name="bmin"
+          /></label>
+          <label
+            >Blue Max: <input type="range" min="0" max="255" name="bmax"
+          /></label>
+        </div>
+      </div>
+      <canvas class="photo"></canvas>
+      <video class="player"></video>
+      <div class="strip"></div>
+    </div>
+
+    <audio src="assets/camera-shutter-199580.mp3" hidden id="snap"></audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>
