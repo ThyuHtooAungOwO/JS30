@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 
-/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +16,6 @@ body {
     min-height: 100vh;
 }
 
-/* Layout */
 .photobooth {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -31,7 +29,6 @@ body {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
-/* Controls */
 .controls {
     grid-column: 1 / -1;
     display: flex;
@@ -58,7 +55,6 @@ body {
     background: #1d4ed8;
 }
 
-/* RGB Sliders */
 .rgb {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -74,7 +70,6 @@ body {
     color: #374151;
 }
 
-/* Base range style */
 .rgb input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
@@ -84,7 +79,6 @@ body {
     cursor: pointer;
 }
 
-/* Custom thumbs */
 .rgb input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -104,7 +98,6 @@ body {
     cursor: pointer;
 }
 
-/* Color coding */
 input[name^="r"] {
     color: #ef4444;
     background: linear-gradient(to right, #fecaca, #ef4444);
@@ -120,16 +113,15 @@ input[name^="b"] {
     background: linear-gradient(to right, #bfdbfe, #3b82f6);
 }
 
-/* Video & Canvas */
 .player,
 .photo {
     width: 100%;
     border-radius: 0.75rem;
     background: #000;
     object-fit: cover;
+    transform: rotateY(180deg);
 }
 
-/* Strip */
 .strip {
     width: 100%;
     display: flex;
@@ -141,6 +133,7 @@ input[name^="b"] {
 .strip img {
     width: 100%;
     min-width: 200px;
+    max-height: 200px;
     border-radius: 0.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     transition: transform 0.2s;
