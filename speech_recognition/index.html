@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Native Speech Recognition</title>
+    <meta name="color-scheme" content="light dark" />
+    <style>
+      /* ===== CSS Variables & Theme ===== */
+      :root {
+        --bg: #0b0d10;
+        --panel: #111419;
+        --text: #e8eef6;
+        --muted: #9aa4b2;
+        --brand: #6ea8fe;
+        --ok: #3ddc97;
+        --warn: #ffd166;
+        --danger: #ff6b6b;
+        --ring: color-mix(in oklab, var(--brand) 50%, #fff 0%);
+        --radius: 16px;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.35),
+          0 1px 0 rgba(255, 255, 255, 0.03) inset;
+        --border: 1px solid color-mix(in oklab, #fff 8%, transparent);
+        --focus: 0 0 0 4px color-mix(in oklab, var(--brand) 30%, transparent);
+        --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
+          "Segoe UI Emoji";
+        --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", monospace;
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f7f8fb;
+          --panel: #ffffff;
+          --text: #0f1222;
+          --muted: #5c667a;
+          --brand: #3b82f6;
+          --shadow: 0 12px 30px rgba(15, 18, 34, 0.08),
+            0 1px 0 rgba(15, 18, 34, 0.04) inset;
+          --border: 1px solid rgba(15, 18, 34, 0.06);
+        }
+      }
+
+      /* ===== Base ===== */
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font: 16px/1.5 var(--font);
+        color: var(--text);
+        background: radial-gradient(
+            1200px 800px at 10% -10%,
+            color-mix(in oklab, var(--brand) 15%, transparent),
+            transparent 50%
+          ),
+          radial-gradient(
+            1200px 800px at 110% 110%,
+            color-mix(in oklab, var(--ok) 12%, transparent),
+            transparent 50%
+          ),
+          var(--bg);
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      /* ===== Card ===== */
+      .app {
+        width: min(100%, 900px);
+        background: var(--panel);
+        border: var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        overflow: clip;
+      }
+
+      .app__header {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 20px;
+        border-bottom: var(--border);
+        backdrop-filter: saturate(120%) blur(6px);
+      }
+
+      .title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+      }
+      .title__dot {
+        inline-size: 12px;
+        block-size: 12px;
+        border-radius: 999px;
+        background: var(--muted);
+        box-shadow: 0 0 0 6px color-mix(in oklab, var(--muted) 20%, transparent);
+        transition: background 0.2s ease, box-shadow 0.2s ease;
+      }
+      .status {
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      /* ===== Controls ===== */
+      .controls {
+        display: grid;
+        grid-template-columns: 1fr auto auto;
+        gap: 12px;
+        padding: 16px 20px;
+        align-items: center;
+        border-bottom: var(--border);
+      }
+      @media (max-width: 640px) {
+        .controls {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .select,
+      .toggle,
+      .button {
+        appearance: none;
+        font: inherit;
+        color: var(--text);
+        background: color-mix(in oklab, var(--panel) 70%, #0000);
+        border: var(--border);
+        border-radius: 12px;
+        padding: 10px 12px;
+        outline: none;
+        transition: border-color 0.15s ease, transform 0.04s ease;
+      }
+      .select:focus,
+      .toggle:focus,
+      .button:focus {
+        box-shadow: var(--focus);
+      }
+      .select:hover,
+      .toggle:hover,
+      .button:hover {
+        border-color: color-mix(in oklab, var(--text) 12%, transparent);
+      }
+
+      .toggle {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+      }
+      .toggle input {
+        appearance: none;
+        inline-size: 38px;
+        block-size: 22px;
+        border-radius: 999px;
+        background: color-mix(in oklab, var(--muted) 35%, transparent);
+        position: relative;
+        outline: none;
+        transition: background 0.2s ease;
+      }
+      .toggle input::after {
+        content: "";
+        position: absolute;
+        inset: 3px auto auto 3px;
+        inline-size: 16px;
+        block-size: 16px;
+        border-radius: 999px;
+        background: var(--panel);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+        transition: transform 0.2s ease;
+      }
+      .toggle input:checked {
+        background: color-mix(in oklab, var(--brand) 60%, transparent);
+      }
+      .toggle input:checked::after {
+        transform: translateX(16px);
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px 14px;
+        cursor: pointer;
+        background: linear-gradient(
+          180deg,
+          color-mix(in oklab, var(--brand) 40%, transparent),
+          transparent 60%
+        );
+        border-color: color-mix(in oklab, var(--brand) 35%, transparent);
+      }
+      .button:active {
+        transform: translateY(1px);
+      }
+      .button[data-state="listening"] {
+        background: linear-gradient(
+          180deg,
+          color-mix(in oklab, var(--ok) 45%, transparent),
+          transparent 60%
+        );
+        border-color: color-mix(in oklab, var(--ok) 40%, transparent);
+      }
+
+      /* ===== Transcript ===== */
+      .transcript {
+        max-block-size: 46vh;
+        overflow: auto;
+        padding: 18px 20px 8px;
+        scroll-behavior: smooth;
+      }
+      .line {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 10px;
+        align-items: start;
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: var(--border);
+        background: color-mix(in oklab, var(--panel) 85%, #0000);
+        margin-block-end: 10px;
+      }
+      .line__tag {
+        font: 12px/1 var(--mono);
+        letter-spacing: 0.2px;
+        padding: 6px 8px;
+        border-radius: 8px;
+        background: color-mix(in oklab, var(--muted) 15%, transparent);
+        color: var(--muted);
+      }
+      .line__text {
+        word-wrap: anywhere;
+      }
+      .line__time {
+        font-size: 12px;
+        color: var(--muted);
+        white-space: nowrap;
+        margin-inline-start: 6px;
+      }
+
+      .hint {
+        color: var(--muted);
+        font-size: 0.95rem;
+        padding: 12px 20px 22px;
+        border-top: var(--border);
+      }
+
+      /* ===== Mic Pulse (when listening) ===== */
+      .mic-dot {
+        inline-size: 12px;
+        block-size: 12px;
+        border-radius: 999px;
+        background: var(--danger);
+        box-shadow: 0 0 0 0 color-mix(in oklab, var(--danger) 40%, transparent);
+        transform: translateZ(0);
+      }
+      .is-listening .title__dot {
+        background: var(--ok);
+        box-shadow: 0 0 0 8px color-mix(in oklab, var(--ok) 25%, transparent);
+      }
+      .is-listening .mic-dot {
+        animation: pulse 1.2s ease-out infinite;
+      }
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0
+            color-mix(in oklab, var(--danger) 35%, transparent);
+        }
+        70% {
+          box-shadow: 0 0 0 12px
+            color-mix(in oklab, var(--danger) 0%, transparent);
+        }
+        100% {
+          box-shadow: 0 0 0 0 color-mix(in oklab, var(--danger) 0%, transparent);
+        }
+      }
+
+      /* ===== Accessibility ===== */
+      .visually-hidden {
+        position: absolute !important;
+        inline-size: 1px;
+        block-size: 1px;
+        margin: -1px;
+        border: 0;
+        padding: 0;
+        white-space: nowrap;
+        clip-path: inset(50%);
+        clip: rect(0 0 0 0);
+        overflow: hidden;
+      }
+
+      /* Respect reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app" id="app" aria-labelledby="app-title">
+      <!-- Header -->
+      <header class="app__header">
+        <div class="title">
+          <span class="title__dot" aria-hidden="true"></span>
+          <h1 id="app-title" style="margin: 0; font-size: 1.1rem">
+            Native Speech Recognition
+          </h1>
+        </div>
+        <div class="status" id="status" role="status" aria-live="polite">
+          idle
+        </div>
+      </header>
+
+      <!-- Controls -->
+      <section class="controls" aria-label="Controls">
+        <!-- Language select (JS can populate with available languages) -->
+        <label class="visually-hidden" for="lang">Language</label>
+        <select class="select" id="lang" name="lang" aria-label="Language">
+          <option value="en-US" selected>English (US)</option>
+          <option value="en-GB">English (UK)</option>
+          <option value="ja-JP">日本語 (Japan)</option>
+          <option value="my-MM">Myanmar (Unicode)</option>
+        </select>
+
+        <!-- Interim results toggle -->
+        <label class="toggle" for="interim">
+          <input type="checkbox" id="interim" name="interim" checked />
+          <span>Interim results</span>
+        </label>
+
+        <!-- Mic button -->
+        <button
+          class="button"
+          id="btn"
+          type="button"
+          aria-pressed="false"
+          aria-label="Start listening"
+          data-state="idle"
+        >
+          <span class="mic-dot" aria-hidden="true"></span>
+          <span id="btn-label">Start</span>
+        </button>
+      </section>
+
+      <!-- Transcript list -->
+      <section
+        class="transcript"
+        id="transcript"
+        aria-label="Transcript"
+        tabindex="0"
+      >
+        <!-- JS will append .line elements here -->
+        <!-- Example placeholder line: remove when you wire JS -->
+        <article class="line" aria-live="polite">
+          <span class="line__tag">final</span>
+          <div class="line__text">Your transcript will appear here.</div>
+          <time class="line__time" datetime="">—</time>
+        </article>
+      </section>
+
+      <div class="hint">
+        Tip: click <strong>Start</strong>, speak near your mic, then click again
+        to stop. Your interim results will stream live; final results get locked
+        in with a timestamp.
+      </div>
+    </main>
+    <script>
+      (() => {
+        const app = document.getElementById("app");
+        const btn = document.getElementById("btn");
+        const btnLabel = document.getElementById("btn-label");
+        const status = document.getElementById("status");
+        const transcriptEl = document.getElementById("transcript");
+        const langSelect = document.getElementById("lang");
+        const interimToggle = document.getElementById("interim");
+
+        // Check browser support
+        const SpeechRecognition =
+          window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (!SpeechRecognition) {
+          status.textContent = "SpeechRecognition not supported 😢";
+          btn.disabled = true;
+          return;
+        }
+
+        let recognition;
+        let listening = false;
+
+        function initRecognition() {
+          recognition = new SpeechRecognition();
+          recognition.continuous = true;
+          recognition.interimResults = interimToggle.checked;
+          recognition.lang = langSelect.value;
+
+          recognition.onstart = () => {
+            listening = true;
+            app.classList.add("is-listening");
+            btn.dataset.state = "listening";
+            btn.setAttribute("aria-pressed", "true");
+            btnLabel.textContent = "Stop";
+            status.textContent = "listening…";
+          };
+
+          recognition.onend = () => {
+            listening = false;
+            app.classList.remove("is-listening");
+            btn.dataset.state = "idle";
+            btn.setAttribute("aria-pressed", "false");
+            btnLabel.textContent = "Start";
+            status.textContent = "idle";
+          };
+
+          recognition.onresult = (e) => {
+            for (let i = e.resultIndex; i < e.results.length; i++) {
+              const result = e.results[i];
+              const transcript = result[0].transcript.trim();
+              const isFinal = result.isFinal;
+
+              addLine(transcript, isFinal ? "final" : "interim");
+            }
+          };
+
+          recognition.onerror = (e) => {
+            status.textContent = `error: ${e.error}`;
+            console.error("SpeechRecognition error:", e);
+          };
+        }
+
+        function addLine(text, tag) {
+          if (!text) return;
+          const time = new Date();
+          const hh = String(time.getHours()).padStart(2, "0");
+          const mm = String(time.getMinutes()).padStart(2, "0");
+          const timestamp = `${hh}:${mm}`;
+
+          // if it's interim, replace the last interim instead of appending forever
+          if (tag === "interim") {
+            const last = transcriptEl.querySelector(
+              ".line[data-tag='interim']"
+            );
+            if (last) {
+              last.querySelector(".line__text").textContent = text;
+              return;
+            }
+          }
+
+          const article = document.createElement("article");
+          article.className = "line";
+          article.dataset.tag = tag;
+
+          article.innerHTML = `
+      <span class="line__tag">${tag}</span>
+      <div class="line__text">${text}</div>
+      <time class="line__time" datetime="${time.toISOString()}">${timestamp}</time>
+    `;
+
+          if (tag === "interim") {
+            transcriptEl.appendChild(article);
+          } else {
+            // if final comes, remove interim and add final
+            const interimLine = transcriptEl.querySelector(
+              ".line[data-tag='interim']"
+            );
+            if (interimLine) interimLine.remove();
+            transcriptEl.appendChild(article);
+          }
+
+          transcriptEl.scrollTop = transcriptEl.scrollHeight;
+        }
+
+        function start() {
+          initRecognition();
+          recognition.start();
+        }
+
+        function stop() {
+          if (recognition) recognition.stop();
+        }
+
+        // Button toggle
+        btn.addEventListener("click", () => {
+          if (listening) {
+            stop();
+          } else {
+            start();
+          }
+        });
+
+        // Update lang / interim setting on change
+        langSelect.addEventListener("change", () => {
+          if (recognition) {
+            stop();
+            start();
+          }
+        });
+        interimToggle.addEventListener("change", () => {
+          if (recognition) {
+            stop();
+            start();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
