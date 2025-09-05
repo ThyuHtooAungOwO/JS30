@@ -381,9 +381,9 @@
 
         function initRecognition() {
           recognition = new SpeechRecognition();
-          recognition.continuous = false;
-          recognition.interimResults = false;
-          recognition.lang = "en-US";
+          recognition.continuous = true;
+          recognition.interimResults = interimToggle.checked;
+          recognition.lang = langSelect.value;
 
           recognition.onstart = () => {
             listening = true;
@@ -482,6 +482,7 @@
             start();
           }
         });
+
         interimToggle.addEventListener("change", () => {
           if (recognition) {
             stop();
