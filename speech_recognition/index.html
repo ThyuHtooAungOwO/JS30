@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Native Speech Recognition</title>
     <meta name="color-scheme" content="light dark" />
+    <link rel="shortcut icon" href="../assets/logo.svg" type="image/x-icon" />
     <style>
-      /* ===== CSS Variables & Theme ===== */
       :root {
         --bg: #0b0d10;
         --panel: #111419;
@@ -41,7 +41,6 @@
         }
       }
 
-      /* ===== Base ===== */
       * {
         box-sizing: border-box;
       }
@@ -69,7 +68,6 @@
         padding: 24px;
       }
 
-      /* ===== Card ===== */
       .app {
         width: min(100%, 900px);
         background: var(--panel);
@@ -109,7 +107,6 @@
         color: var(--muted);
       }
 
-      /* ===== Controls ===== */
       .controls {
         display: grid;
         grid-template-columns: 1fr auto auto;
@@ -209,7 +206,6 @@
         border-color: color-mix(in oklab, var(--ok) 40%, transparent);
       }
 
-      /* ===== Transcript ===== */
       .transcript {
         max-block-size: 46vh;
         overflow: auto;
@@ -252,7 +248,6 @@
         border-top: var(--border);
       }
 
-      /* ===== Mic Pulse (when listening) ===== */
       .mic-dot {
         inline-size: 12px;
         block-size: 12px;
@@ -282,7 +277,6 @@
         }
       }
 
-      /* ===== Accessibility ===== */
       .visually-hidden {
         position: absolute !important;
         inline-size: 1px;
@@ -296,7 +290,6 @@
         overflow: hidden;
       }
 
-      /* Respect reduced motion */
       @media (prefers-reduced-motion: reduce) {
         * {
           animation: none !important;
@@ -307,7 +300,6 @@
   </head>
   <body>
     <main class="app" id="app" aria-labelledby="app-title">
-      <!-- Header -->
       <header class="app__header">
         <div class="title">
           <span class="title__dot" aria-hidden="true"></span>
@@ -320,9 +312,7 @@
         </div>
       </header>
 
-      <!-- Controls -->
       <section class="controls" aria-label="Controls">
-        <!-- Language select (JS can populate with available languages) -->
         <label class="visually-hidden" for="lang">Language</label>
         <select class="select" id="lang" name="lang" aria-label="Language">
           <option value="en-US" selected>English (US)</option>
@@ -331,13 +321,11 @@
           <option value="my-MM">Myanmar (Unicode)</option>
         </select>
 
-        <!-- Interim results toggle -->
         <label class="toggle" for="interim">
           <input type="checkbox" id="interim" name="interim" checked />
           <span>Interim results</span>
         </label>
 
-        <!-- Mic button -->
         <button
           class="button"
           id="btn"
@@ -351,15 +339,12 @@
         </button>
       </section>
 
-      <!-- Transcript list -->
       <section
         class="transcript"
         id="transcript"
         aria-label="Transcript"
         tabindex="0"
       >
-        <!-- JS will append .line elements here -->
-        <!-- Example placeholder line: remove when you wire JS -->
         <article class="line" aria-live="polite">
           <span class="line__tag">final</span>
           <div class="line__text">Your transcript will appear here.</div>
@@ -383,7 +368,6 @@
         const langSelect = document.getElementById("lang");
         const interimToggle = document.getElementById("interim");
 
-        // Check browser support
         const SpeechRecognition =
           window.SpeechRecognition || window.webkitSpeechRecognition;
         if (!SpeechRecognition) {
@@ -397,9 +381,9 @@
 
         function initRecognition() {
           recognition = new SpeechRecognition();
-          recognition.continuous = true;
-          recognition.interimResults = interimToggle.checked;
-          recognition.lang = langSelect.value;
+          recognition.continuous = false;
+          recognition.interimResults = false;
+          recognition.lang = "en-US";
 
           recognition.onstart = () => {
             listening = true;
@@ -431,7 +415,7 @@
 
           recognition.onerror = (e) => {
             status.textContent = `error: ${e.error}`;
-            console.error("SpeechRecognition error:", e);
+            console.error("SpeechRecognition error:", e.error);
           };
         }
 
@@ -442,7 +426,6 @@
           const mm = String(time.getMinutes()).padStart(2, "0");
           const timestamp = `${hh}:${mm}`;
 
-          // if it's interim, replace the last interim instead of appending forever
           if (tag === "interim") {
             const last = transcriptEl.querySelector(
               ".line[data-tag='interim']"
@@ -466,7 +449,6 @@
           if (tag === "interim") {
             transcriptEl.appendChild(article);
           } else {
-            // if final comes, remove interim and add final
             const interimLine = transcriptEl.querySelector(
               ".line[data-tag='interim']"
             );
@@ -486,7 +468,6 @@
           if (recognition) recognition.stop();
         }
 
-        // Button toggle
         btn.addEventListener("click", () => {
           if (listening) {
             stop();
@@ -495,7 +476,6 @@
           }
         });
 
-        // Update lang / interim setting on change
         langSelect.addEventListener("change", () => {
           if (recognition) {
             stop();
