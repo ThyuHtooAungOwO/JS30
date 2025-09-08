@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Quicksand", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 100px 200px;
+    user-select: none;
+    background: linear-gradient(135deg, #0f0f0f, #1a1a2e);
+    color: white;
+}
+
+main {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    transition: all 0.3s ease;
+    color: inherit;
+    position: relative;
+    font-weight: 600;
+    z-index: 1;
+    padding: 10px 20px;
+}
+
+h1 {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.nav {
+    margin-bottom: 100px;
+}
+
+.text_section {
+    max-width: 600px;
+    line-height: 1.6;
+
+}
+
+.highlight {
+    transition: all 0.3s ease;
+    background: linear-gradient(120deg, #f39c12, #8e44ad);
+    border-bottom: 2px solid #f39c12;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    border-radius: 20px;
+    display: block;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
