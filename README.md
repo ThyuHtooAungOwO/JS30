@@ -35,6 +35,7 @@ No frameworks, no libraries, no boilerplate — just pure JS, HTML, and CSS.
 | 22  | **Follow Along Links**                  | Implemented a dynamic highlight effect that follows navigation links as you hover, using `getBoundingClientRect()` and CSS transforms. Practiced event listeners, DOM measurements, and smooth transitions to create an interactive navigation experience.                                                                      |
 | 23  | **Speech Synthesis API**                | Experimented with `window.speechSynthesis` to generate spoken output from text, learning about voices, utterances, and browser limitations.                                                                                                                                                                                     |
 | 24  | **Sticky Navigation**                   | Built a sticky navigation bar that stays visible while scrolling, practicing CSS `position: sticky` and handling layout quirks for smooth behavior.                                                                                                                                                                             |
+| 25  | **Event Flow**                          | Practiced event capture, propagation, bubbling, and the `once` option to better control how event listeners behave in complex DOM interactions.                                                                                                                                                                                 |
 
 ---
 

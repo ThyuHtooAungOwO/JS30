@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Flow</title>
+    <link rel="shortcut icon" href="../assets/logo.svg" type="image/x-icon" />
+    <style>
+      html {
+        box-sizing: border-box;
+      }
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+      div {
+        width: 100%;
+        padding: 100px;
+      }
+      .one {
+        background-color: rgba(255, 0, 0, 0.5);
+      }
+      .two {
+        background-color: rgba(0, 255, 0, 0.5);
+      }
+      .three {
+        background-color: rgba(0, 0, 255, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="one">
+      <div class="two">
+        <div class="three"></div>
+      </div>
+    </div>
+
+    <script>
+      const divs = document.querySelectorAll("div");
+
+      function logText(e) {
+        console.log(this.classList.value);
+        // e.stopPropagation(); //to stop the event propagation
+      }
+
+      divs.forEach((div) => {
+        div.addEventListener("click", logText, {
+          capture: false, //to make it capture phase (default is false, bubbling phase)
+          //once: true, //to make it fire only once
+        });
+      });
+    </script>
+  </body>
+</html>
